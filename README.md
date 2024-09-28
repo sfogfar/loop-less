@@ -1,5 +1,11 @@
 # shadow-cljs - browser quickstart
 
+
+## Note to self:
+
+If Conjure connects to the shadow.cljs nREPL but js namespace is not available
+try `:ConjureShadowSelect app`
+
 This is a minimum template you can use as the basis for CLJS projects intended to run in the browser.
 
 ## Required Software

@@ -5,17 +5,18 @@
   "src/test"]
 
  :dependencies
- []
+ [[reagent "1.1.1"]]
+
 
  :dev-http
  {8020 "public"}
 
  :builds
- {:app
+ {:frontend
   {:target :browser
    :output-dir "public/js"
    :asset-path "/js"
 
    :modules
    {:main ; becomes public/js/main.js
-    {:init-fn starter.browser/init}}}}}
+    {:init-fn free-retro-two.frontend.app/init}}}}}
