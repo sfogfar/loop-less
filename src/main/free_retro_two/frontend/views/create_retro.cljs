@@ -1,6 +1,7 @@
 (ns free-retro-two.frontend.views.create-retro
   (:require [reagent.core :as r]
-            [free-retro-two.firebase.firebase :as firebase]))
+            [free-retro-two.firebase.firebase :as firebase]
+            [free-retro-two.specs.retro :refer [valid-retro?]]))
 
 (def retro-templates
   [{:id :mad-sad-glad :name "Mad, Sad, Glad" :icon "😃😢😠"}
@@ -40,7 +41,9 @@
      " Include Kudos column"]]])
 
 (defn create-retro [retro-data]
-  (firebase/push-data! "retros" retro-data))
+  (if (valid-retro? retro-data)
+  (firebase/push-data! "retros" retro-data)
+  (js/console.error "Invalid data")))
 
 (defn create-retro-page []
   (let [retro-name (r/atom "")
@@ -61,7 +64,7 @@
          [:div.field.is-grouped.is-grouped-centered
           [:div.control
            [:button.button.is-primary.is-large
-            {:on-click #(create-retro {:name @retro-name
+            {:on-click #(create-retro {:retro-name @retro-name
                                        :selected-template @selected-template
                                        :include-kudos @include-kudos})}
             "Create Retro"]]]]]])))
