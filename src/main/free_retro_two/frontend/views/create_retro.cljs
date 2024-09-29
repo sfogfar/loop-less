@@ -1,7 +1,8 @@
 (ns free-retro-two.frontend.views.create-retro
   (:require [reagent.core :as r]
             [free-retro-two.firebase.firebase :as firebase]
-            [free-retro-two.specs.retro :refer [valid-retro?]]))
+            [free-retro-two.specs.retro :refer [valid-retro?]]
+            [reitit.frontend.easy :as rfe]))
 
 (def retro-templates
   [{:id :mad-sad-glad :name "Mad, Sad, Glad" :icon "😃😢😠"}
@@ -42,8 +43,13 @@
 
 (defn create-retro [retro-data]
   (if (valid-retro? retro-data)
-  (firebase/push-data! "retros" retro-data)
-  (js/console.error "Invalid data")))
+    (-> (firebase/push-data! "retros" retro-data)
+        (.then (fn [new-retro-ref]
+                 (let [new-retro-id (.-key new-retro-ref)]
+                   (rfe/push-state :retro {:id new-retro-id}))))
+        (.catch (fn [error]
+                  (js/alert (str "Failed to create retro: " (.-message error))))))
+    (js/console.error "Invalid data")))
 
 (defn create-retro-page []
   (let [retro-name (r/atom "")

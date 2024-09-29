@@ -1,6 +1,14 @@
 (ns free-retro-two.frontend.app
-  (:require [reagent.dom :as rd]
-            [free-retro-two.frontend.views.create-retro :refer [create-retro-page]]))
+  (:require [reagent.dom :as rdom]
+            [free-retro-two.frontend.router :as router]))
+
+(defn app []
+  [:div
+   [router/current-page]])
+
+(defn mount-root []
+  (router/init-routes!)
+  (rdom/render [app] (.getElementById js/document "app")))
 
 (defn init []
-  (rd/render [create-retro-page] (js/document.getElementById "app")))
+  (mount-root))

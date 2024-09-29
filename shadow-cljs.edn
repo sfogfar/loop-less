@@ -5,8 +5,8 @@
   "src/test"]
 
  :dependencies
- [[reagent "1.1.1"]]
-
+ [[reagent "1.1.1"]
+  [metosin/reitit "0.7.2"]]
 
  :dev-http
  {8020 "public"}
