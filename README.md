@@ -4,9 +4,8 @@
 
 This project uses:
 
-- [Volta](https://volta.sh/) to manage node and yarn.
-- [Shadow CLJS](https://shadow-cljs.github.io/docs/UsersGuide.html) to compile
-  ClojureScript.
+- [Volta](https://volta.sh/) to manage node and yarn. Shadow CLJS will be
+  installed by yarn.
 
 ## Quick start guide
 
