@@ -1,4 +1,4 @@
-(ns free-retro-two.specs.retro
+(ns loop-less.specs.retro
   (:require [clojure.spec.alpha :as s]))
 
 (s/def ::retro-name (s/and string? not-empty))

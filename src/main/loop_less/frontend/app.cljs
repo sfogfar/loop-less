@@ -1,6 +1,6 @@
-(ns free-retro-two.frontend.app
+(ns loop-less.frontend.app
   (:require [reagent.dom :as rdom]
-            [free-retro-two.frontend.router :as router]))
+            [loop-less.frontend.router :as router]))
 
 (defn app []
   [:div

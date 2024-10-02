@@ -1,7 +1,7 @@
-(ns free-retro-two.frontend.views.create-retro
+(ns loop-less.frontend.views.create-retro
   (:require [reagent.core :as r]
-            [free-retro-two.firebase.firebase :as firebase]
-            [free-retro-two.specs.retro :refer [valid-retro?]]
+            [loop-less.firebase.firebase :as firebase]
+            [loop-less.specs.retro :refer [valid-retro?]]
             [reitit.frontend.easy :as rfe]))
 
 (def retro-templates
